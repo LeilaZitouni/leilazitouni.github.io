@@ -1,0 +1,15 @@
+footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    background: #333;
+    color: white;
+    padding: .5em;
+    box-sizing: border-box;
+}
+
+footer a {
+    color: inherit;
+}

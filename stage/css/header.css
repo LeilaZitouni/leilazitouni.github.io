@@ -1,0 +1,24 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: auto;
+    transition: .3s ease;
+    padding: 1em;
+    box-sizing: border-box;
+    background: rgba(0,0,0,.1);
+}
+
+.header_button {
+    cursor: pointer;
+    float: right;
+    padding: 1em 0;
+}
+
+header svg {
+    height: 30px;
+    width: 30px;
+    transition: .3s ease;
+}

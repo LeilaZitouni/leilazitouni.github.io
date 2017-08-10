@@ -1,5 +1,39 @@
-<html>
-    <body>
-        Hello World!
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Stage</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <link href="../resources/css/normalize.css" type="text/css" rel="stylesheet"/>
+
+    <link href="./css/header.css" type="text/css" rel="stylesheet"/>
+    <link href="./css/main.css" type="text/css" rel="stylesheet"/>
+    <link href="./css/footer.css" type="text/css" rel="stylesheet"/>
+    <link href="./css/site_menu.css" type="text/css" rel="stylesheet"/>
+    <link href="./css/grid.css" type="text/css" rel="stylesheet"/>
+    <link href="./css/depth.css" type="text/css" rel="stylesheet"/>
+
+
+
+    <!-- DEBUGGGGG -->
+    <link href="./css/debug.css" type="text/css" rel="stylesheet"/>
+
+    <script src="../resources/js/w3.js"></script>
+  </head>
+  <body>
+    <div w3-include-html="include/navbar.html"></div>
+    <div w3-include-html="include/site_menu.html"></div>
+    <div id="content" w3-include-html="page/main.html"></div>
+    <div w3-include-html="include/footer.html"></div>
+
+
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="../resources/js/domi.js"></script>
+    <script src="./js/init.js"></script>
+    <script src="./js/lazy.js"></script>
+  </body>
 </html>

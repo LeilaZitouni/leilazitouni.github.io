@@ -45,7 +45,7 @@
         // base element toggle function
 
         function toggle($domiEl, status, silent) {
-            var $target = getTarget($domiEl);
+            var $target = getTarget($domiEl, 'body');
             var classData = getToggleClass($domiEl);
 
             $target.toggleClass(classData, status);
@@ -305,21 +305,6 @@
                     func.apply(context, args);
                 }, ms);
             };
-        }
-
-        function bubbleSort(a) {
-            var swapped;
-            do {
-                swapped = false;
-                for (var i = 0; i < a.length - 1; i++) {
-                    if (getPriority($(a[i])) > getPriority($(a[i + 1]))) {
-                        var temp = a[i];
-                        a[i] = a[i + 1];
-                        a[i + 1] = temp;
-                        swapped = true;
-                    }
-                }
-            } while (swapped);
         }
 
         function ns(str) { // event namespace
