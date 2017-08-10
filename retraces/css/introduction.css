@@ -1,0 +1,42 @@
+html, body { height: 100%; }
+.panel, .panel-static-content {
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+    display: block;
+    position: relative;
+}
+
+.director-name {
+    font-size: 30px;
+    letter-spacing: 3px;
+    color: white;
+    position: absolute;
+    display: block;
+    overflow: visible;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+}
+.director {
+    font-size: 25px;
+    color: white;
+    position: absolute;
+    display: block;
+    overflow: visible;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+}
+.panel-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.panel-video {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+}

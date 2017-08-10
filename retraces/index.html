@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+        <title>Retracés</title>
+        <!-- CSS  -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <script src="http://www.w3schools.com/lib/w3data.js"></script>
+
+        <link href="css/materialize.css" type="text/css" rel="stylesheet"/>
+        <link href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+        <link href="css/normalize.css" type="text/css" rel="stylesheet"/>
+        <link href="css/style.css" type="text/css" rel="stylesheet"/>
+        <!--<link href="css/demo.css" type="text/css" rel="stylesheet"/>-->
+        <link href="css/set1.css" type="text/css" rel="stylesheet"/>
+        <link href="css/set2.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+        <style type="text/css">
+        
+            html, body { height: 100%; }
+
+            .crop2x1 { 
+                height: 0;
+                padding-bottom: 75%; 
+            }
+            .panel,
+            .panel-static-content {
+                height: 100%;
+                width: 100%;
+                text-align: center;
+                display: block;
+                position: relative;
+            }
+            .panel-image {
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            .panel-video {
+                background-color: black;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: auto;
+            }
+            .panel-video::-webkit-media-controls-panel {
+                display: none;
+            }
+
+            .panel .section {
+                height: 100%;
+            }
+
+            .profile-videos .col {
+                padding: 0;
+            }
+
+            .video-circle-link {
+                height: 0;
+                padding-bottom: 50%;
+                width: 50%;
+                overflow: hidden;
+                position: relative;
+                text-align: center;
+                margin: 15% auto;
+                transform: rotate(45deg);
+                border: 2px solid #363636;
+                box-sizing: content-box;
+                transition: border 100ms;
+            }
+
+            .video-circle-link:hover {
+                border-right-width: 10px;
+            }
+
+            .video-circle-link .play-btn {
+                overflow: hidden;
+                background: rgba(0,0,0,0.3);
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                margin: auto;
+                opacity:0;
+                -webkit-transition: opacity 0.35s;
+                -moz-transition: opacity 0.35s;
+                transition: opacity 0.35s;
+                cursor: pointer;
+            }
+            
+            .video-circle-link h4 {
+                position: absolute;
+                top:0;
+                bottom:0;
+                margin: auto;
+                width: 100%;
+                height: 1em;
+                font-size: 1.5em;
+            }
+
+            .parallax-container {
+                min-height: 350px;
+                line-height: 0;
+                height: auto;
+                color: rgba(255,255,255,.9);
+            }
+            .parallax-container .section {
+                width: 100%;
+            }
+
+            #index-banner {
+                height: 100%;
+            }
+
+            @media (min-width : 768px) {
+                #index-banner {
+                    height: 65%;
+                }
+
+                .crop2x1 { 
+                    height: 0;
+                    padding-bottom: 50%; 
+                }
+            }
+
+            #main-screen-background {
+                background-color: #cacaca;
+                background-image: url(./Images/Background.png);
+                position: absolute;
+                background-size: 40%;
+                box-sizing: border-box;
+            }
+
+            @media only screen and (max-width : 992px) {
+                .parallax-container .section {
+                    position: absolute;
+                    top: 40%;
+                }
+            }
+
+            .parallax video {
+                position: absolute;
+                left: 50%;
+                bottom: 0;
+                min-width: 100%;
+                min-height: 100%;
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+                -webkit-transform: translateX(-50%);
+                transform: translateX(-50%);
+            }
+
+            .profile-videos video {
+                width: 50%;
+                height: 50%;
+                padding: 0;
+                margin: 0;
+                float: left;
+            }  
+
+            .video-circle-title {
+                font-family: sans-serif;
+                word-spacing: -0.15em;
+                font-weight: 300;
+                transform: rotate(-45deg);
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                height: 1.2em;
+                color: black;
+            }
+
+            .video-circle-title span {
+                font-weight: 800;
+            }
+
+            .css-cross{
+                padding: 10px;
+                width: 20px;
+                height: 20px;
+                background-color: rgba(0, 0, 0, 0.1);
+                position:relative;
+                box-sizing: content-box;
+            }
+            .css-cross::after,.css-cross::before{
+                position: absolute;
+                top: 50%;
+                left: calc(50% - 10px);
+                content: '';
+                display: block;
+                width: 20px;
+                height: 2px;
+                background-color: white;
+                
+            }
+            .css-cross::after{
+                -webkit-transform: rotate(45deg);
+                -moz-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                -o-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+            .css-cross::before{
+                -webkit-transform: rotate(-45deg);
+                -moz-transform: rotate(-45deg);
+                -ms-transform: rotate(-45deg);
+                -o-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+            }
+        </style>
+			
+        <div class="all-content">
+            <div id="index-banner" class="panel">
+                <div id="main-screen-background" class="panel-static-content panel-image"></div>
+            </div>
+
+
+            <div class="container appear-effect">
+                <div class="section">
+
+                <div class="row">
+                    <div class="col s12 center" style="padding: 20px">
+                    <h4>Introduction</h4>
+                    <p class="left-align light"><span style="font-weight: 800;">Retracés</span> est un projet documentaire universitaire réalisé dans le cadre des <span style="font-weight: 800;">Rencontres de Mellionnec</span>, organisé par l'association <a href="http://www.tyfilms.fr/" target="_blank" style="text-decoration: underline; color: black; font: sans-serif;"><span style="font-weight: 800;">Ty Films</span></a>. Au travers de portraits vidéos se découvrent l'univers des quatres documentaristes participant à l'édition 2017, qui nous parlent de leur vision du documentaire, de leur métier, de leurs envies, leurs objectifs et de leurs vies. Une première galerie de portraits photographiques présentent et introduisent les documentaristes dans leur ensemble.</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="profile-videos">
+                <div class="row">
+                    <div class="col s12 m6 appear-effect d-300">
+                        <figure class="effect-hera">
+                            <div class="panel-image crop2x1" style='background-image: url("./Images/Jeff_thumb.png");'><div>
+                            <a class="toggleOverlay" data-src="Introduction 1.html">
+                            <figcaption class="appear-effect d-300">
+                                <h2>Jeff  <span>Zorrilla</span></h2>
+                                <p>VOIR</p>
+                            </figcaption>           
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="col s12 m6 appear-effect d-300">
+                        <figure class="effect-hera">
+                            <div class="panel-image crop2x1" style='background-image: url("./Images/Carlos_thumb.png");'><div>
+                            <a class="toggleOverlay" data-src="Introduction 2.html">
+                            <figcaption class="appear-effect d-300">
+                                <h2>Carlos  <span>Villegas</span></h2>
+                                <p>VOIR</p>
+                            </figcaption>			
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="col s12 m6 appear-effect d-300">
+                        <figure class="effect-hera">
+                            <div class="panel-image crop2x1" style='background-image: url("./Images/Martin_thumb.png");'><div>
+                            <a class="toggleOverlay" data-src="Introduction 3.html">
+                            <figcaption class="appear-effect d-500">
+                                <h2>Martin  <span>Monsalve</span></h2>
+                                <p>VOIR</p>
+                            </figcaption>           
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="col s12 m6 appear-effect d-300">
+                        <figure class="effect-hera">
+                            <div class="panel-image crop2x1" style='background-image: url("./Images/Elena_thumb.png");'><div>
+                            <a class="toggleOverlay" data-src="Introduction 4.html">
+                            <figcaption class="appear-effect d-500">
+                                <h2>Elena  <span>Cardeso</span></h2>
+                                <p>VOIR</p>
+                            </figcaption>	
+                            </a>		
+                        </figure>
+                    </div>
+                </div>
+            </div>
+
+            <div class="parallax-container valign-wrapper appear-effect d-500">
+                <div class="section no-pad-bot">
+                <div class="container">
+                    <div class="row center">
+                        <h1 class="center-align appear-effect" style="font-family: sans-serif; word-spacing: -0.15em;
+    font-weight: 300; font-size:4vw;">LES<span style="font-weight: 800;"> PORTRAITS</span></h1>
+                    </div>
+                </div>
+                </div>
+                <div class="parallax">
+                    <video autoplay class="panel-static-content panel-video" id="video_C_djv20140426016" preload="none" poster="./images/parallax-video-placeholder.png" loop="true"><source class="mp4" src="./videos/parallax-video.mp4" type="video/mp4"><source class="webm" src="./videos/parallax-video.webm" type="video/webm"></video>
+                </div>
+            </div>
+
+            <section class="section" style="padding:7%;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m4 appear-effect d-300">
+                            <div class="video-circle-link panel-image">
+                                <div class="center-align video-circle-title">VIDEO <span>1</span></div>
+                                <div class="play-btn toggleOverlay" data-src="videoIframe.html"></div>
+                            </div>
+                        </div>
+                        <div class="col s12 m4 appear-effect d-500">
+                            <div class="video-circle-link panel-image">
+                                <div class="center-align video-circle-title">VIDEO <span>2</span></div>
+                                <div class="play-btn toggleOverlay" data-src="VideoIFrame2.html"></div>
+                            </div>
+                        </div>
+                        <div class="col s12 m4 appear-effect d-700">
+                            <div class="video-circle-link panel-image">
+                                <div class="center-align video-circle-title">VIDEO <span>3</span></div>
+                                <div class="play-btn toggleOverlay" data-src="VideoIFrame3.html"></div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </section>
+
+            </div>
+        </div>
+
+        <div class="overlay overlay-contentscale">
+            <div class="center-align toggleOverlay" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
+                <div class="css-cross"></div>
+            </div>
+            <iframe id="overlay-iframe" frameborder="0" allowfullscreen></iframe>
+        </div>
+    
+
+        <!--  Scripts-->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/init.js"></script>
+        <script src="js/domi.js"></script>
+        <script>
+              $(function () { // wait for document ready
+                  // init
+                  var controller = new ScrollMagic.Controller();
+                  // get all slides
+                  $('.appear-effect').each(function(){
+                      var self = this;
+                      new ScrollMagic.Scene({triggerElement: this, triggerHook: "onEnter"})
+                                          .addTo(controller)
+                                          .on('enter', function() {
+                                              $(self).toggleClass('active', true);
+                                          });
+                  });
+              });
+          </script>
+    </body>
+</html>
