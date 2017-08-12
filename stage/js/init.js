@@ -1,13 +1,14 @@
-function initIncludes() {
+function initIncludes(pageName) {
     w3.includeHTML(function(){
       checkLazyElements();
+      $('input[page="' + pageName + '"]').prop('checked', true);
     });
 }
 
 function gotoPage(pageName) {
     window.history.replaceState({}, pageName, "?page=" + pageName);
     $('#content').attr("w3-include-html", "./page/" + pageName + '.html');
-    initIncludes();
+    initIncludes(pageName);
 }
 
 function navigateToPageInUrl() {
@@ -34,6 +35,14 @@ function init() {
         var target = $this.attr('target') || 'body';
 
         $(target).toggleClass(klass);
+    });
+
+    $('body').on("click", "[lazy-iframe]", function() {
+        var $this = $(this);
+        var iframe = $('<iframe  width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
+        iframe.attr('src', this.getAttribute('lazy-iframe'));
+        this.removeAttribute('lazy-iframe');
+        $this.append(iframe);
     });
 }
 

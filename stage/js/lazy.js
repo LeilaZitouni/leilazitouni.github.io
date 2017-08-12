@@ -10,7 +10,6 @@ function lazyLoadByAttr(el) {
     };
 }
 
-lazyProcessors.push(['lazy-iframe', 'src'   , processIframes]);
 lazyProcessors.push(['lazy-img'   , 'src'   , processImage]);
 lazyProcessors.push(['lazy-srcset', 'srcset', replaceAttrAndRemoveFrom]);
 lazyProcessors.push(['lazy-size'  , 'sizes' , processParentSize]);
@@ -44,16 +43,6 @@ function replaceAttrAndRemoveFrom(el, attrFrom, attrTo) {
 function processParentSize(el, attrFrom, attrTo) {
     el.setAttribute(attrTo, el.parentNode.clientWidth + "px");
     el.removeAttribute(attrFrom);
-}
-
-// process iframes
-function processIframes(el, attrFrom, attrTo) {
-    el.onload = function() {
-        el.removeAttribute(attrFrom);
-        el.removeAttribute(LOADING_ATTR);
-    };
-    el.setAttribute(attrTo, el.getAttribute(attrFrom));
-    el.setAttribute(LOADING_ATTR, true);
 }
 
 function debounce(func, wait, immediate) {

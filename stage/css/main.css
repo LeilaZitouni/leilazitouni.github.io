@@ -16,7 +16,7 @@ body {
 
 .container {
     margin: 0 auto;
-    max-width: 1280px;
+    max-width: 1100px;
     width: 90%;
 }
 
@@ -31,7 +31,7 @@ body {
 }
 
 .inner {
-    margin: 10px;
+    padding: 2vw;
 }
 
 .center {
@@ -68,4 +68,29 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.video-container[lazy-iframe]:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: rgba(255,255,255,0.35);
+    background-image: url('http://www.beyond-recovery.co.uk/images/playButton.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 20%;
+    cursor: pointer;
+    transition: all 200ms;
+}
+.video-container[lazy-iframe]:hover:after {
+    background-color: rgba(255,255,255,0.1);
+    background-size: 0%;
+}
+
+img {
+    border-radius: 3px;
 }

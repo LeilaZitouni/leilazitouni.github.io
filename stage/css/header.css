@@ -29,7 +29,7 @@ header {
 
 .slidemenu label span {
     display: block;
-    padding: 10px;
+    padding: 10px 0;
 }
 
 @media (max-width: 767px) {
@@ -82,8 +82,13 @@ header {
 
 /*Toggle*/
 
+.slidemenu .slide-toggle + label {
+    filter: grayscale(100);
+}
+
 .slidemenu .slide-toggle:checked + label {
     opacity: 1;
+    filter: grayscale(0);
 }
 
 .slidemenu #slide-item-1:checked + label {
@@ -101,6 +106,7 @@ header {
 .slidemenu #slide-item-5:checked + label {
     color: #13d57b;
 }
+
 
 .slidemenu #slide-item-1:checked ~ .slider .bar {
     margin-left: 5%;
@@ -121,4 +127,35 @@ header {
 .slidemenu #slide-item-5:checked ~ .slider .bar {
     margin-left: 85%;
     background: #13d57b;
+}
+
+.icon-communication {
+    background-image: url(/resources/images/icons.svg);
+    background-size: 199px;
+    background-position: 99px -44px;
+}
+
+.icon-tournage {
+    background-image: url(/resources/images/adobe-icons.svg);
+    background-size: 180px;
+    background-position: 138px 72px;
+}
+
+.icon-structure {
+    background-image: url('/resources/images/adobe-icons.svg');
+    background-size: 190px;
+    background-position: 96px -40px;
+}
+
+.icon.material-icons {
+    font-size: 24px !important;
+}
+
+.icon-montage {
+    background-image: url(/resources/images/adobe-icons.svg);
+    background-size: 178px;
+    background-position: 183px -20px;
+}
+
+.icon-accueil {
 }
