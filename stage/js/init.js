@@ -1,13 +1,20 @@
+var pageCache = {};
+
 function initIncludes(pageName) {
     w3.includeHTML(function(){
       checkLazyElements();
       $('input[page="' + pageName + '"]').prop('checked', true);
+      pageCache[pageName] = $('#content').html();
     });
 }
 
 function gotoPage(pageName) {
     window.history.replaceState({}, pageName, "?page=" + pageName);
-    $('#content').attr("w3-include-html", "./page/" + pageName + '.html');
+    if(pageCache[pageName]) {
+        $('#content').html(pageCache[pageName]);
+    } else {
+        $('#content').attr("w3-include-html", "./page/" + pageName + '.html');
+    }
     initIncludes(pageName);
 }
 
