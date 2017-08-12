@@ -91,6 +91,29 @@ body {
     background-size: 0%;
 }
 
+.responsive-image {
+    position: relative;
+}
+
+.crop16x9 {
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+.responsive-image img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+img[lazy-img],
+img[lazy-loading] {
+    opacity: 0;
+}
+
 img {
+    transition: all 500ms;
     border-radius: 3px;
 }
