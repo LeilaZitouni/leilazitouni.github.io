@@ -39,8 +39,7 @@ header {
 }
 
 .slidemenu label .icon {
-    font-size: 20px;
-    /* border: solid 2px #333; */
+    font-size: 22px;
     text-align: center;
     height: 50px;
     width: 50px;
@@ -155,7 +154,4 @@ header {
     background-image: url(/resources/images/adobe-icons.svg);
     background-size: 178px;
     background-position: 183px -20px;
-}
-
-.icon-accueil {
 }

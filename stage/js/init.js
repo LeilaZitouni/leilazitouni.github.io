@@ -3,6 +3,7 @@ var pageCache = {};
 function initIncludes(pageName) {
     w3.includeHTML(function(){
       checkLazyElements();
+      $('.parallax').parallax();
       $('input[page="' + pageName + '"]').prop('checked', true);
       pageCache[pageName] = $('#content').html();
     });

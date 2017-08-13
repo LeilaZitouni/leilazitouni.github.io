@@ -6,6 +6,7 @@
 @import url("./grid.css");
 @import url("./footer.css");
 @import url("./depth.css");
+@import url("./parallax.css");
 @import url("./mosk.css");
 /* @import url("./debug.css"); */
 
@@ -25,9 +26,34 @@ body {
   clear: both;
 }
 
-.inner {
+.spacer {
     margin: 3vw;
 }
+
+.spacer--1 {
+    margin: 1vw;
+}
+
+.spacer--2 {
+    margin: 2vw;
+}
+
+.spacer--3 {
+    margin: 3vw;
+}
+
+.spacer--4 {
+    margin: 4vw;
+}
+
+.spacer--5 {
+    margin: 5vw;
+}
+
+.spacer--6 {
+    margin: 6vw;
+}
+
 
 .center {
     text-align: center;
@@ -57,7 +83,7 @@ body {
   overflow: hidden;
 }
 
-.video-container iframe, .video-container object, .video-container embed {
+.video-container iframe, .video-container object, .video-container embed, .video-container video {
   position: absolute;
   top: 0;
   left: 0;
@@ -118,12 +144,10 @@ img {
     letter-spacing: 1px;
     word-spacing: 10px;
     text-align: justify;
-    padding-left: 20px;
-    padding-right: 20px;
 }
 
 .cols-l2 {
     column-width: 300px;
     column-count: 2;
-    column-gap: 6vw;
+    column-gap: 8vw;
 }  

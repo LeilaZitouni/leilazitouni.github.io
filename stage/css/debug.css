@@ -4,7 +4,7 @@
 .row {
     background: rgba(0,255,0,0.1);
 }
-.inner {
+.spacer {
     background: rgba(255,0,0,0.1);
     border: 1px solid black;
 }
