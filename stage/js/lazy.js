@@ -4,12 +4,13 @@ var lazyProcessors = [];
 function lazyLoadByAttr(el) {
     for(var i=0; i < lazyProcessors.length; ++i) {
         var processor = lazyProcessors[i];
-        if(el.getAttribute(processor[0]) && isVisible(el, 600, 200)) {
+        if(el.getAttribute(processor[0]) && isVisible(el, window.innerHeight*0.5, window.innerHeight*0.5)) {
             processor[2](el, processor[0], processor[1]);
         }
     };
 }
 
+lazyProcessors.push(['lazy-src'   , 'src'   , replaceAttrAndRemoveFrom]);
 lazyProcessors.push(['lazy-img'   , 'src'   , processImage]);
 lazyProcessors.push(['lazy-srcset', 'srcset', replaceAttrAndRemoveFrom]);
 lazyProcessors.push(['lazy-size'  , 'sizes' , processParentSize]);

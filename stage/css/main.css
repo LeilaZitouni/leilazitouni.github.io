@@ -147,7 +147,7 @@ img {
 .page-text {
     line-height: 1.7em;
     letter-spacing: 1px;
-    word-spacing: 10px;
+    word-spacing: 1px;
     text-align: justify;
 }
 
