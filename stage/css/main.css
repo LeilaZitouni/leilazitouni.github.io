@@ -94,6 +94,7 @@ body {
 .video-container[lazy-iframe]:after {
     content: '';
     position: absolute;
+    pointer-events: none;
     top: 0;
     bottom: 0;
     left: 0;
