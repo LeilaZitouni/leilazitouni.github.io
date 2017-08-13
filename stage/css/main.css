@@ -15,6 +15,10 @@ body {
 
 }
 
+html {
+    touch-action: manipulation;
+}
+
 .container {
     margin: 0 auto;
     width: 95%;
