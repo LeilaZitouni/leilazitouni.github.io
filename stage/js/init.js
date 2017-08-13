@@ -49,7 +49,7 @@ function init() {
         var iframe = $('<iframe  width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
         iframe.attr('src', this.getAttribute('lazy-iframe'));
         this.removeAttribute('lazy-iframe');
-        $this.append(iframe);
+        $this.html(iframe);
     });
 }
 
