@@ -15,12 +15,10 @@ function initIncludes(pageName) {
         checkLazyElements();
 
         // load parallax elements
-        if(screen.width < 600){
-            $('.parallax').parallax();
-        }
+        initParallaxElements();
 
         // update the headline element
-        $('input[page="' + pageName + '"]').prop('checked', true);
+        updateNavigationHeader(pageName);
 
         // save the loaded page to cache
         pageCache[pageName] = $('#content').html();
@@ -40,7 +38,7 @@ function loadPage(pageName) {
 function navigateToPageInUrl(e) {
     var re = /[?&]page=([^&?]+)/;
     var pageQuery = re.exec(window.location.search);
-    var pageName = pageQuery ? pageQuery[1] : 'main';
+    var pageName = pageQuery ? pageQuery[1] : pages[0];
 
     window.history.replaceState({}, pageName, "?page=" + pageName);
     loadPage(pageName);
@@ -54,6 +52,10 @@ function gotoNextPage() {
     gotoPage(currentPage + 1);
 }
 
+function gotoPageName(pageName) {
+    gotoPage(pages.indexOf(pageName));
+}
+
 function gotoPage(futurePage) {
     if(futurePage == pages.length) { futurePage = 0; }
     if(futurePage < 0) { futurePage = pages.length -1; }
@@ -65,6 +67,20 @@ function gotoPage(futurePage) {
     loadPage(pageName);
 }
 
+function updateNavigationHeader(pageName) {
+    $('input[page="' + pageName + '"]').prop('checked', true);
+}
+
+function initParallaxElements() {
+    if(!isMobile()){
+        $('.parallax').parallax();
+    }
+}
+
+function isMobile() {
+    return screen.width < 600;
+}
+
 function init() {
     window.onpopstate = navigateToPageInUrl;
     navigateToPageInUrl();
@@ -72,7 +88,7 @@ function init() {
     $('body').on("click", "[page]", function() {
         var pageName = this.getAttribute("page");
         if(window.location.search.indexOf('page=' + pageName) < 0){
-            gotoPage(pageName);
+            gotoPageName(pageName);
         }
     });
 
@@ -92,7 +108,7 @@ function init() {
 
 
     // handle swipe in mobile
-    if(screen.width < 600){
+    if(isMobile()){
         document.addEventListener('touchstart', handleTouchStart, false);        
         document.addEventListener('touchmove', handleTouchMove, false);
 
