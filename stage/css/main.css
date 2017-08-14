@@ -87,6 +87,10 @@ html {
   overflow: hidden;
 }
 
+.video-container img {
+    width: 100%;
+}
+
 .video-container iframe, .video-container object, .video-container embed, .video-container video {
   position: absolute;
   top: 0;
