@@ -1,5 +1,14 @@
+body[current-page] header {
+    display: block;
+}
+
+body[current-page="main"] header {
+    display: none;
+}
+
 header {
     margin: 20px auto;
+    display: none;
 }
 
 .slide-toggle {
@@ -25,6 +34,7 @@ header {
 .slidemenu label:hover {
     cursor: pointer;
     color: #666;
+    opacity: .6;
 }
 
 .slidemenu label span {

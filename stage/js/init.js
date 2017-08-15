@@ -21,9 +21,11 @@ function initIncludes(pageName) {
         updateNavigationHeader(pageName);
 
         // save the loaded page to cache
-        pageCache[pageName] = $('#content').html();
+        pageCache[$('#content').attr("current-page")] = $('#content').html();
 
         $('body').attr('current-page', pageName);
+
+        glowSplash();
     });
 }
 
@@ -33,6 +35,7 @@ function loadPage(pageName) {
     } else {
         $('#content').attr("w3-include-html", "./page/" + pageName + '.html');
     }
+    $('#content').attr("current-page", pageName);
     initIncludes(pageName);
     currentPage = pages.indexOf(pageName);
 }
@@ -83,9 +86,24 @@ function isMobile() {
     return screen.width < 600;
 }
 
+function glowSplash() {
+    var video = document.getElementById('splash-video');
+    if(!video) {
+        return;
+    }
+
+    video.playbackRate = Math.random() * 3 + 0.5;
+    video.play();
+    setTimeout(glowSplash, Math.random() * 4000 + 1000);
+}
+
 function init() {
     window.onpopstate = navigateToPageInUrl;
     navigateToPageInUrl();
+
+    setTimeout(function() {
+
+    })
 
     $('body').on("click", "[page]", function() {
         var pageName = this.getAttribute("page");
