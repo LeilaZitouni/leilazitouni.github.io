@@ -178,7 +178,8 @@ img {
 }
 
 .page-text a {
-    text-transform: none;
+    text-decoration: none;
+    color: inherit;
     display: inline-block;
     position: relative;
     transition: all 200ms;
