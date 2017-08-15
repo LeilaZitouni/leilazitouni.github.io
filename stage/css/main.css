@@ -220,28 +220,28 @@ p a:after {
     background-color: blue;
 }
 
-body[page='main'] p a:before,
-body[page='main'] p a:hover {
+body[current-page='main'] p a:before,
+body[current-page='main'] p a:hover {
     background-color: #aaa;
 }
 
-body[page='structure'] p a:before,
-body[page='structure'] p a:hover {
+body[current-page='structure'] p a:before,
+body[current-page='structure'] p a:hover {
     background-color: rgb(255, 223, 96);
 }
 
-body[page='montage'] p a:before,
-body[page='montage'] p a:hover {
+body[current-page='montage'] p a:before,
+body[current-page='montage'] p a:hover {
     background-color: #98dcff;
 }
 
-body[page='communication'] p a:before,
-body[page='communication'] p a:hover {
+body[current-page='communication'] p a:before,
+body[current-page='communication'] p a:hover {
     background-color: #ff8888;
 }
 
-body[page='tournage'] p a:before,
-body[page='tournage'] p a:hover {
+body[current-page='tournage'] p a:before,
+body[current-page='tournage'] p a:hover {
     background-color: #45e69b;
 }
 

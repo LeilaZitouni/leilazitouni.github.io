@@ -1,11 +1,12 @@
 .parallax-container {
-  position: relative;
-  overflow: hidden;
-  height: 70vw;
-  max-height: 70vh;
+    position: relative;
+    overflow: hidden;
+    height: 70vw;
+    max-height: 70vh;
 }
 
-.parallax video {
+.parallax video,
+.parallax img {
     position: absolute;
     left: 50%;
     bottom: 0;
@@ -13,4 +14,5 @@
     min-height: 100%;
     transform: translate3d(0, 0, 0);
     transform: translateX(-50%);
+    transition: none;
 }
