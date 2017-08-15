@@ -21,7 +21,7 @@ function initIncludes(pageName) {
         updateNavigationHeader(pageName);
 
         // save the loaded page to cache
-        pageCache[$('#content').attr("current-page")] = $('#content').html();
+        // pageCache[pageName] = $('#content').html();
 
         $('body').attr('current-page', pageName);
 
@@ -35,7 +35,6 @@ function loadPage(pageName) {
     } else {
         $('#content').attr("w3-include-html", "./page/" + pageName + '.html');
     }
-    $('#content').attr("current-page", pageName);
     initIncludes(pageName);
     currentPage = pages.indexOf(pageName);
 }
