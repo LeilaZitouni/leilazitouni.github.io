@@ -217,3 +217,7 @@ img {
     column-count: 2;
     column-gap: 8vw;
 }  
+.caption {
+    font-style: italic;
+    font-size:0.9em;
+}
