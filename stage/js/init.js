@@ -22,6 +22,8 @@ function initIncludes(pageName) {
 
         // save the loaded page to cache
         pageCache[pageName] = $('#content').html();
+
+        $('body').attr('page', pageName);
     });
 }
 
