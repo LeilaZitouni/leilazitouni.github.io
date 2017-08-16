@@ -91,9 +91,9 @@ function glowSplash() {
         return;
     }
 
-    video.playbackRate = Math.random() * 6 + 0.5;
+    video.playbackRate = Math.random() * 4 + 0.5;
     video.play();
-    setTimeout(glowSplash, Math.random() * 4000 + 1000);
+    setTimeout(glowSplash, Math.random() * 2500 + 1000);
 }
 
 function init() {
