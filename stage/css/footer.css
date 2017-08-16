@@ -1,4 +1,14 @@
+body[current-page] footer {
+    display: block;
+}
+
+
+body[current-page="main"] footer {
+    display: none;
+}
+
 footer {
+    display: none;
     text-align: center;
     color: white;
     padding: 2em 0;
