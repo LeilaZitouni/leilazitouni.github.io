@@ -1,0 +1,39 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('../../resources/css/normalize.css');
+@import url('./social_icons.css');
+@import url('./grid.css');
+@import url('./depth.css');
+@import url('./parallax.css');
+@import url('./helpers.css');
+@import url('./spacer.css');
+@import url('./video-container.css');
+@import url('./player.css');
+
+body {
+    font-family: mosk, helvetica, arial, sans-serif;
+    background: #fafafa;
+}
+
+html {
+    touch-action: manipulation;
+}
+
+a {
+    color: inherit;
+}
+
+.container {
+    margin: 0 auto;
+    width: 95%;
+}
+
+[page],
+[toggle] {
+    cursor: pointer;
+}
+
+img[lazy-img],
+img[lazy-loading] {
+    opacity: 0;
+}

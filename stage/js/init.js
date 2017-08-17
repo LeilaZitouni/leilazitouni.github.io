@@ -100,10 +100,6 @@ function init() {
     window.onpopstate = navigateToPageInUrl;
     navigateToPageInUrl();
 
-    setTimeout(function() {
-
-    })
-
     $('body').on("click", "[page]", function() {
         var pageName = this.getAttribute("page");
         if(window.location.search.indexOf('page=' + pageName) < 0){

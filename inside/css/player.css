@@ -1,0 +1,58 @@
+.player .controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 7vw 10vw;
+}
+
+.player .controls:hover {
+    background: rgba(0,0,0,.3);
+}
+
+.player .controls .buttons {
+    float: left;
+    padding: 0 20px 0 0;
+    box-sizing: border-box;
+}
+
+.player .progress {
+    overflow: hidden;
+    position: relative;
+    height: 10px;
+}
+
+.player .progress .line {
+    height: 1px;
+    background: white;
+    opacity: .5;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: all 200ms, width 0ms linear;
+}
+
+.player .progress .line.elapsed {
+    width: 0;
+    opacity: 1;
+}
+
+.player .progress:hover .line {
+    height: 100%;
+    opacity: 0.5;
+}
+
+.player[paused="false"] .play {
+    display: none;
+}
+
+.player[playing="false"] .pause {
+    display: none;
+}
+
+.player[ended="true"] .stop,
+.player[stopped="true"] .stop {
+    display: none;
+}
+
