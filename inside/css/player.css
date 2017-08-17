@@ -1,25 +1,74 @@
+.player {
+    background: black;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
 .player .controls {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 7vw 10vw;
+    padding: 100px 160px 50px 100px;
+    opacity: .4;
+    transition: all 800ms;
+}
+
+.player video {
+    position: absolute;
+    margin: auto;
+    vertical-align: middle;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
 }
 
 .player .controls:hover {
-    background: rgba(0,0,0,.3);
+    opacity: 1;
+}
+
+.player .controls:before {
+    content: '';
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    transition: all 800ms;
+    opacity: .1;
+    background: linear-gradient(180deg, transparent 0%, #000 100%);
+}
+
+.player .controls:hover:before {
+    opacity: .9;
 }
 
 .player .controls .buttons {
     float: left;
     padding: 0 20px 0 0;
     box-sizing: border-box;
+    color: white;
+    font-size: 18px;
+}
+
+.player .controls .button {
+    cursor: pointer;
+    transform: translate(0, -50%);
+    padding: 12px;
+    width: 16px;
+    height: 18px;
+    text-align: center;
 }
 
 .player .progress {
     overflow: hidden;
     position: relative;
     height: 10px;
+    top: -5px;
 }
 
 .player .progress .line {
@@ -30,6 +79,9 @@
     width: 100%;
     top: 0;
     left: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 1px;
     transition: all 200ms, width 0ms linear;
 }
 
@@ -40,19 +92,21 @@
 
 .player .progress:hover .line {
     height: 100%;
-    opacity: 0.5;
 }
 
-.player[paused="false"] .play {
+.player[paused='false'] .play {
     display: none;
 }
 
-.player[playing="false"] .pause {
+.player[playing='false'] .pause {
     display: none;
 }
 
-.player[ended="true"] .stop,
-.player[stopped="true"] .stop {
+.player[ended='true'] .stop,
+.player[stopped='true'] .stop {
     display: none;
 }
 
+.player .button.play.fa.fa-play {
+    text-indent: 3px;
+}
