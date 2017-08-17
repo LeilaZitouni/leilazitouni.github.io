@@ -325,11 +325,6 @@ body[current-page='tournage'] p a:hover {
     color: white;
 }
 
-.square-link:hover {
-    /* filter: blur(1px); */
-    /* background: rgba(255,255,255,.5); */
-}
-
 .square-link__icon i {
     height: 100px;
     line-height: 100px;
@@ -344,7 +339,7 @@ body[current-page='tournage'] p a:hover {
 }
 
 .square-link:hover .square-link__content {
-    top: 10px;
+    top: 1vh;
     position: relative;
 }
 
