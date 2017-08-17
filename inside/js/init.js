@@ -11,9 +11,7 @@ function loadPage(pageName) {
 
         $('body').attr('current-page', pageName);
 
-        $('.player').each(function(){
-            videoPlayer = new Player($(this));
-        })
+        initYTPlayer();
     });
 }
 

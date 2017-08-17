@@ -17,14 +17,14 @@
     transition: all 800ms;
 }
 
-.player video {
+.player iframe {
     position: absolute;
-    margin: auto;
-    vertical-align: middle;
     left: 0;
     right: 0;
     bottom: 0;
     top: 0;
+    height: 56.25vw;
+    width: 100%;
 }
 
 .player .controls:hover {
@@ -64,6 +64,15 @@
     text-align: center;
 }
 
+.player .controls .button.spin {
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {transform: translate(0, -50%) rotate(0deg);}
+    100% {transform: translate(0, -50%) rotate(359deg);}
+}
+
 .player .progress {
     overflow: hidden;
     position: relative;
@@ -94,16 +103,17 @@
     height: 100%;
 }
 
-.player[paused='false'] .play {
+.player[buffering='true'] .play,
+.player[playing='true'] .play {
     display: none;
 }
 
+.player[buffering='true'] .pause,
 .player[playing='false'] .pause {
     display: none;
 }
 
-.player[ended='true'] .stop,
-.player[stopped='true'] .stop {
+.player[buffering='false'] .buffering {
     display: none;
 }
 
