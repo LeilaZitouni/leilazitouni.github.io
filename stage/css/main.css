@@ -103,6 +103,7 @@ a {
     height: 100%;
 }
 
+.video-preview:after,
 .video-container[lazy-iframe]:after {
     content: '';
     position: absolute;
@@ -120,6 +121,7 @@ a {
     cursor: pointer;
     transition: all 200ms;
 }
+.video-preview:hover:after,
 .video-container[lazy-iframe]:hover:after {
     background-color: rgba(255,255,255,.1);
     background-size: 0;
