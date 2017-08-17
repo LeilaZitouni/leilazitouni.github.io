@@ -388,5 +388,6 @@ body[current-page='tournage'] p a:hover {
 }
 
 .max-600 {
-    max-width: 600px;
+    max-width: 100%;
+    width: 600px;
 }
