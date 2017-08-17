@@ -370,3 +370,23 @@ body[current-page='tournage'] p a:hover {
 .square-link[page="montage"] .line { background: #4bafe2; }
 .square-link[page="communication"] .line { background: #d94343; }
 .square-link[page="tournage"] .line { background: #13d57b; }
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.no-mt {
+    margin-top: 0;
+}
+
+.no-mb {
+    margin-bottom: 0;
+}
+
+.max-600 {
+    max-width: 600px;
+}
