@@ -12,6 +12,7 @@ footer {
     text-align: center;
     padding: 2em 0;
     box-sizing: border-box;
+    font-weight: 300;
 }
 
 footer a {
