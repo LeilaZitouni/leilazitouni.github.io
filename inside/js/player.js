@@ -10,11 +10,12 @@ function initYTPlayer() {
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 var player;
+
 function onYouTubeIframeAPIReady() {
-    if(player) {
+    if (player) {
         player.destroy();
     }
-    player = new Player('6v2L2UGZJAM');
+    player = new Player('6L4yGat8Blc');
 }
 
 function Player(videoId) {
