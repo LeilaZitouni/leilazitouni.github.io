@@ -1,6 +1,7 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('../../resources/css/normalize.css');
+@import url('../../resources/css/slider.css');
 @import url('./social_icons.css');
 @import url('./header.css');
 @import url('./grid.css');
@@ -366,10 +367,18 @@ body[current-page='tournage'] p a:hover {
 }
 
 
-.square-link[page="structure"] .line { background: #ffaf19; }
-.square-link[page="montage"] .line { background: #4bafe2; }
-.square-link[page="communication"] .line { background: #d94343; }
-.square-link[page="tournage"] .line { background: #13d57b; }
+.square-link[page='structure'] .line {
+    background: #ffaf19;
+}
+.square-link[page='montage'] .line {
+    background: #4bafe2;
+}
+.square-link[page='communication'] .line {
+    background: #d94343;
+}
+.square-link[page='tournage'] .line {
+    background: #13d57b;
+}
 
 .float-right {
     float: right;
@@ -390,4 +399,9 @@ body[current-page='tournage'] p a:hover {
 .max-600 {
     max-width: 100%;
     width: 600px;
+}
+
+video.responsive,
+img.responsive {
+    width: 100%;
 }

@@ -10,7 +10,7 @@ var pages = [
 ]
 
 function initIncludes(pageName) {
-    w3.includeHTML(function(){
+    w3.includeHTML(function() {
         // load lazy loaded elements
         checkLazyElements();
 
@@ -20,9 +20,6 @@ function initIncludes(pageName) {
         // update the headline element
         updateNavigationHeader(pageName);
 
-        // save the loaded page to cache
-        // pageCache[pageName] = $('#content').html();
-
         $('body').attr('current-page', pageName);
 
         glowSplash();
@@ -30,7 +27,7 @@ function initIncludes(pageName) {
 }
 
 function loadPage(pageName) {
-    if(pageCache[pageName]) {
+    if (pageCache[pageName]) {
         $('#content').html(pageCache[pageName]);
     } else {
         $('#content').attr("w3-include-html", "./page/" + pageName + '.html');
@@ -61,13 +58,17 @@ function gotoPageName(pageName) {
 }
 
 function gotoPage(futurePage) {
-    if(futurePage == pages.length) { futurePage = 0; }
-    if(futurePage < 0) { futurePage = pages.length -1; }
+    if (futurePage == pages.length) {
+        futurePage = 0;
+    }
+    if (futurePage < 0) {
+        futurePage = pages.length - 1;
+    }
 
     var pageName = pages[futurePage];
 
     window.history.pushState({}, pageName, "?page=" + pageName);
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     loadPage(pageName);
 }
 
@@ -76,7 +77,7 @@ function updateNavigationHeader(pageName) {
 }
 
 function initParallaxElements() {
-    if(!isMobile()){
+    if (!isMobile()) {
         $('.parallax').parallax();
     }
 }
@@ -87,7 +88,7 @@ function isMobile() {
 
 function glowSplash() {
     var video = document.getElementById('splash-video');
-    if(!video) {
+    if (!video) {
         return;
     }
 
@@ -102,7 +103,7 @@ function init() {
 
     $('body').on("click", "[page]", function() {
         var pageName = this.getAttribute("page");
-        if(window.location.search.indexOf('page=' + pageName) < 0){
+        if (window.location.search.indexOf('page=' + pageName) < 0) {
             gotoPageName(pageName);
         }
     });
@@ -123,49 +124,49 @@ function init() {
 
 
     // handle swipe in mobile
-    if(isMobile()){
-        document.addEventListener('touchstart', handleTouchStart, false);        
+    if (isMobile()) {
+        document.addEventListener('touchstart', handleTouchStart, false);
         document.addEventListener('touchmove', handleTouchMove, false);
 
-        var xDown = null;                                                        
-        var yDown = null;                                                        
+        var xDown = null;
+        var yDown = null;
 
-        function handleTouchStart(evt) {          
-            xDown = evt.touches[0].clientX;                                      
-            yDown = evt.touches[0].clientY;                                      
-        };                                                
+        function handleTouchStart(evt) {
+            xDown = evt.touches[0].clientX;
+            yDown = evt.touches[0].clientY;
+        };
 
         function handleTouchMove(evt) {
-            if ( ! xDown || ! yDown ) {
+            if (!xDown || !yDown) {
                 return;
             }
 
-            var xUp = evt.touches[0].clientX;                                    
+            var xUp = evt.touches[0].clientX;
             var yUp = evt.touches[0].clientY;
 
             var xDiff = xDown - xUp;
             var yDiff = yDown - yUp;
 
-            if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
-                if ( xDiff > 0 ) {
-                    /* left swipe */ 
+            if (Math.abs(xDiff) > Math.abs(yDiff)) { /*most significant*/
+                if (xDiff > 0) {
+                    /* left swipe */
                     gotoNextPage();
                 } else {
                     /* right swipe */
                     gotoPrevPage();
-                }                       
+                }
             } else {
-                if ( yDiff > 0 ) {
-                    /* up swipe */ 
+                if (yDiff > 0) {
+                    /* up swipe */
                     console.log('up swipe');
-                } else { 
+                } else {
                     /* down swipe */
                     console.log('down swipe');
-                }                                                                 
+                }
             }
             /* reset values */
             xDown = null;
-            yDown = null;                                             
+            yDown = null;
         };
     }
 }
