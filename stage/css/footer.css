@@ -10,12 +10,11 @@ body[current-page="main"] footer {
 footer {
     display: none;
     text-align: center;
-    color: white;
     padding: 2em 0;
     box-sizing: border-box;
 }
 
 footer a {
-    color: inherit;
+    color: white;
     margin: 1vw;
 }
