@@ -122,6 +122,12 @@ function init() {
         $(this).html(iframe);
     });
 
+    $('body').on("mouseenter mouseleave", "[highlight]", function(e) {
+        var target = $(this.getAttribute('highlight'));
+
+        $(target).toggleClass('highlighted', e.type == 'mouseenter');
+    });
+
 
     // handle swipe in mobile
     if (isMobile()) {
