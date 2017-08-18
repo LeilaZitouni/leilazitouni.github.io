@@ -42,3 +42,8 @@ i.icon:after {
     margin: auto;
     display: block;
 }
+
+
+.person {
+    background: rgba(255, 0, 0, 0.5);
+}

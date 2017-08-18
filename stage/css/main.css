@@ -442,3 +442,71 @@ img.responsive {
     font-size: 64px;
     font-family: 'Shadows Into Light Two';
 }
+
+
+.person {
+    position: absolute;
+}
+
+.person--1 {
+    width: 8%;
+    height: 64%;
+    top: 27%;
+    left: 4%;
+}
+
+.person--2 {
+    width: 8%;
+    height: 64%;
+    top: 27%;
+    left: 13%;
+}
+
+.person--3 {
+    width: 13%;
+    height: 36%;
+    top: 53%;
+    left: 32%;
+}
+
+.person--4 {
+    width: 8%;
+    height: 30%;
+    top: 22%;
+    left: 39%;
+}
+
+.person--5 {
+    width: 6%;
+    height: 53%;
+    top: 27%;
+    left: 47%;
+}
+
+.person--6 {
+    width: 13%;
+    height: 38%;
+    top: 50%;
+    left: 51%;
+}
+
+.person--7 {
+    width: 8%;
+    height: 23%;
+    top: 27%;
+    left: 54%;
+}
+
+.person--8 {
+    width: 8%;
+    height: 54%;
+    top: 27%;
+    left: 65%;
+}
+
+.person--9 {
+    width: 16%;
+    height: 58%;
+    top: 37%;
+    left: 78%;
+}
