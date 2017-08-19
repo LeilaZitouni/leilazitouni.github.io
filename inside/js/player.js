@@ -8,10 +8,10 @@ function initYTPlayer() {
 
 
 function clockToSecs(time) {
-    if (typeof time == String) {
+    if (typeof time == "string") {
         if (time.indexOf(':') >= 0) {
             timeSplit = time.split(':');
-            time = timeSplit[0] * 60 + timeSplit[1];
+            time = parseInt(timeSplit[0]) * 60 + parseInt(timeSplit[1]);
         }
     }
     return time;
@@ -20,13 +20,12 @@ function clockToSecs(time) {
 function Chapter(start, title, thumbnail) {
     this.start = clockToSecs(start);
     this.title = title || 'Chapter title';
-    this.thumbnail = thumbnail || 'https://i.pinimg.com/236x/f4/f4/d4/f4f4d4e7f1733611853584f03ab2b68a.jpg';
 }
 
 var playerModel = {
     chapters: [
-        new Chapter(0, 'Chapter 1', 'https://i.pinimg.com/236x/f4/f4/d4/f4f4d4e7f1733611853584f03ab2b68a.jpg'),
-        new Chapter(100),
+        new Chapter(0, 'Chapter 1'),
+        new Chapter("3:45", "3:45"),
         new Chapter(300),
         new Chapter(500),
         new Chapter(900),
@@ -43,11 +42,12 @@ function onYouTubeIframeAPIReady() {
     if (player) {
         player.destroy();
     }
-    player = new Player('6L4yGat8Blc', playerModel);
+    player = new Player('dwIDuRBHLnI', playerModel);
 }
 
 function Player(videoId, model) {
     this.element = $('#player');
+    this.element.attr('ready', false);
     this.model = model;
     this.ytp = new YT.Player('ytp', {
         height: '390',
@@ -55,7 +55,7 @@ function Player(videoId, model) {
         videoId: videoId,
         events: {
             'onReady': this.onPlayerReady.bind(this),
-            'onStateChange': this.render.bind(this)
+            'onStateChange': this.onStateChange.bind(this)
         },
         playerVars: {
             controls: 0,
@@ -71,7 +71,7 @@ function Player(videoId, model) {
 
     this.element.on('click', '.play', this.play.bind(this));
     this.element.on('click', '.pause', this.pause.bind(this));
-    this.element.on('click', '.track', this.onProgressClick.bind(this));
+    this.element.on('click', '.progress', this.onProgressClick.bind(this));
     this.element.on('click', '.chapter', this.gotoChapter.bind(this));
 
     // visual UI
@@ -86,6 +86,7 @@ Player.prototype.onPlayerReady = function() {
     this.renderInterval = setInterval(this.render.bind(this), 1000);
     this.updateModelWithVideoData(this.model);
     this.renderChapters(this.model);
+    this.element.on('mousemove mouseover mouseleave', '.progress', this.onProgressMouseEvent.bind(this));
 }
 
 Player.prototype.updateModelWithVideoData = function(model) {
@@ -97,21 +98,57 @@ Player.prototype.updateModelWithVideoData = function(model) {
 }
 
 Player.prototype.gotoChapter = function(ev) {
-    var chapterView = ev.target;
+    var chapterView = ev.currentTarget;
     var start = chapterView.getAttribute('start');
     this.goto(start);
 }
 
-Player.prototype.play = function(ev) {
-    if (this.canPlay()) {
-        this.ytp.playVideo();
+Player.prototype.renderTime = function(t, position) {
+    if (!t) {
+        $('#time').hide();
+    } else {
+        var minutes = Math.floor(t / 60);
+        var seconds = Math.floor(t % 60);
+        w3.displayObject("time", {
+            time: minutes + ":" + (seconds < 10 ? "0" : "") + seconds,
+            position: position
+        });
+        $('#time').show();
     }
 }
 
-Player.prototype.stop = function(ev) {
-    if (this.canStop()) {
-        this.ytp.stopVideo();
+Player.prototype.renderOverLine = function(perc) {
+    $('.line.over').width(perc + "%");
+}
+
+Player.prototype.getTimeData = function(ev) {
+    var w = ev.currentTarget.clientWidth;
+    var x = ev.offsetX;
+    var proportion = x / w;
+    return {
+        t: this.percToTrackSecs(proportion),
+        perc: proportion * 100
     }
+}
+
+Player.prototype.onProgressMouseEvent = function(ev) {
+    if (ev.type == "mouseleave") {
+        this.renderTime(0);
+        this.renderOverLine(0);
+    } else if (this.canSeek()) {
+        var td = this.getTimeData(ev);
+
+        this.renderTime(td.t, td.perc);
+        this.renderOverLine(td.perc);
+    }
+}
+
+Player.prototype.play = function(ev) {
+    this.ytp.playVideo();
+}
+
+Player.prototype.stop = function(ev) {
+    this.ytp.stopVideo();
 }
 
 Player.prototype.destroy = function(ev) {
@@ -120,9 +157,7 @@ Player.prototype.destroy = function(ev) {
 }
 
 Player.prototype.pause = function(ev) {
-    if (this.canPause()) {
-        this.ytp.pauseVideo();
-    }
+    this.ytp.pauseVideo();
 }
 
 Player.prototype.goto = function(secs) {
@@ -133,10 +168,8 @@ Player.prototype.goto = function(secs) {
 
 Player.prototype.onProgressClick = function(ev) {
     if (this.canSeek()) {
-        var w = ev.target.clientWidth;
-        var x = ev.offsetX;
-        var t = this.percToTrackSecs(x / w);
-        this.goto(t);
+        var td = this.getTimeData(ev);
+        this.goto(td.t);
     }
 }
 
@@ -154,14 +187,6 @@ Player.prototype.getElapsedPerc = function() {
 
 Player.prototype.getDuration = function() {
     return this.ytp.getDuration();
-}
-
-Player.prototype.canPlay = function() {
-    return this.isEnded() || this.isPaused();
-}
-
-Player.prototype.canPause = function() {
-    return this.isPlaying();
 }
 
 Player.prototype.canSeek = function() {
@@ -184,11 +209,29 @@ Player.prototype.isEnded = function() {
     return this.ytp.getPlayerState() == 0;
 }
 
+Player.prototype.isUnstarted = function() {
+    return this.ytp.getPlayerState() == -1;
+}
+
+Player.prototype.onStateChange = function() {
+    if (this.isUnstarted()) {
+        this.element.attr('ready', true);
+    }
+
+    if (this.isEnded()) {
+        this.goto(0);
+        this.pause();
+    }
+
+    this.render();
+}
+
 Player.prototype.render = function() {
     this.element.attr('playing', this.isPlaying());
     this.element.attr('paused', this.isPaused());
     this.element.attr('ended', this.isEnded());
     this.element.attr('buffering', this.isBuffering());
+    this.element.attr('unstarted', this.isUnstarted());
 
     this.updateProgressBar();
 }
