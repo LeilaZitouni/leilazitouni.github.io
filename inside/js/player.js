@@ -7,6 +7,34 @@ function initYTPlayer() {
 }
 
 
+function clockToSecs(time) {
+    if (typeof time == String) {
+        if (time.indexOf(':') >= 0) {
+            timeSplit = time.split(':');
+            time = timeSplit[0] * 60 + timeSplit[1];
+        }
+    }
+    return time;
+}
+
+function Chapter(start, title, thumbnail) {
+    this.start = clockToSecs(start);
+    this.title = title || 'Chapter title';
+    this.thumbnail = thumbnail || 'https://i.pinimg.com/236x/f4/f4/d4/f4f4d4e7f1733611853584f03ab2b68a.jpg';
+}
+
+var playerModel = {
+    chapters: [
+        new Chapter(0, 'Chapter 1', 'https://i.pinimg.com/236x/f4/f4/d4/f4f4d4e7f1733611853584f03ab2b68a.jpg'),
+        new Chapter(100),
+        new Chapter(300),
+        new Chapter(500),
+        new Chapter(900),
+        new Chapter(1200),
+        new Chapter(1500)
+    ]
+};
+
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 var player;
@@ -15,11 +43,12 @@ function onYouTubeIframeAPIReady() {
     if (player) {
         player.destroy();
     }
-    player = new Player('6L4yGat8Blc');
+    player = new Player('6L4yGat8Blc', playerModel);
 }
 
-function Player(videoId) {
+function Player(videoId, model) {
     this.element = $('#player');
+    this.model = model;
     this.ytp = new YT.Player('ytp', {
         height: '390',
         width: '640',
@@ -43,13 +72,34 @@ function Player(videoId) {
     this.element.on('click', '.play', this.play.bind(this));
     this.element.on('click', '.pause', this.pause.bind(this));
     this.element.on('click', '.track', this.onProgressClick.bind(this));
+    this.element.on('click', '.chapter', this.gotoChapter.bind(this));
 
     // visual UI
     this.elapsedBar = this.element.find('.elapsed');
 }
 
+Player.prototype.renderChapters = function(model) {
+    w3.displayObject("chapters", model);
+}
+
 Player.prototype.onPlayerReady = function() {
     this.renderInterval = setInterval(this.render.bind(this), 1000);
+    this.updateModelWithVideoData(this.model);
+    this.renderChapters(this.model);
+}
+
+Player.prototype.updateModelWithVideoData = function(model) {
+    var duration = this.getDuration();
+    for (var i = 0; i < this.model.chapters.length; i++) {
+        var chapter = this.model.chapters[i];
+        chapter.startPerc = chapter.start / duration * 100;
+    }
+}
+
+Player.prototype.gotoChapter = function(ev) {
+    var chapterView = ev.target;
+    var start = chapterView.getAttribute('start');
+    this.goto(start);
 }
 
 Player.prototype.play = function(ev) {
