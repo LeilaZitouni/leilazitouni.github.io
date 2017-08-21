@@ -280,13 +280,16 @@ body[current-page='tournage'] p a:hover {
     column-count: 2;
     column-gap: 4vw;
 }
+.caption2,
 .caption {
     font-style: italic;
     font-size: .9em;
     font-weight: 300;
     text-align: center;
 }
-
+.caption2 {
+    margin-bottom: 4vw;
+}
 .fullscreen-bg {
     position: fixed;
     top: 0;
