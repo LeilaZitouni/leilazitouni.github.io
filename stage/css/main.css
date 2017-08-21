@@ -234,7 +234,7 @@ body[current-page='main'] p a:hover {
     background-color: #aaa;
 }
 
-body[current-page='structure'] .page-title {
+body[current-page='structure'] .bottom-border {
     border-bottom: 5px solid #ffaf19;
 }
 
@@ -244,7 +244,7 @@ body[current-page='structure'] p a:hover {
     background-color: rgb(255, 223, 96);
 }
 
-body[current-page='montage'] .page-title {
+body[current-page='montage'] .bottom-border {
     border-bottom: 5px solid #4bafe2;
 }
 body[current-page='montage'] .highlighted,
@@ -253,7 +253,7 @@ body[current-page='montage'] p a:hover {
     background-color: #98dcff;
 }
 
-body[current-page='communication'] .page-title {
+body[current-page='communication'] .bottom-border {
     border-bottom: 5px solid #d94343;
 }
 body[current-page='communication'] .highlighted,
@@ -262,7 +262,7 @@ body[current-page='communication'] p a:hover {
     background-color: #f88;
 }
 
-body[current-page='tournage'] .page-title {
+body[current-page='tournage'] .bottom-border {
     border-bottom: 5px solid #13d57b;
 }
 body[current-page='tournage'] .highlighted,
