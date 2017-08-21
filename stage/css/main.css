@@ -375,6 +375,7 @@ body[current-page='tournage'] p a:hover {
     line-height: 1.2em;
     font-size: 1.2em;
     font-weight: bold;
+    font-family: 'Coda', sans-serif;
 }
 
 .square-link:not(:hover) .line {
