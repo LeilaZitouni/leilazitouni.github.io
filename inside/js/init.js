@@ -1,8 +1,6 @@
-var videoPlayer = null;
-
 function loadPage(pageName) {
     $('#content').attr("w3-include-html", "./page/" + pageName + '.html');
-    w3.includeHTML(function(){
+    w3.includeHTML(function() {
         // load lazy loaded elements
         checkLazyElements();
 
@@ -26,12 +24,12 @@ function navigateToPageInUrl(e) {
 
 function gotoPage(pageName) {
     window.history.pushState({}, pageName, "?page=" + pageName);
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     loadPage(pageName);
 }
 
 function initParallaxElements() {
-    if(!isMobile()){
+    if (!isMobile()) {
         $('.parallax').parallax();
     }
 }
@@ -46,7 +44,7 @@ function init() {
 
     $('body').on("click", "[page]", function() {
         var pageName = this.getAttribute("page");
-        if(window.location.search.indexOf('page=' + pageName) < 0){
+        if (window.location.search.indexOf('page=' + pageName) < 0) {
             gotoPage(pageName);
         }
     });
