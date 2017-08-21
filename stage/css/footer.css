@@ -19,3 +19,8 @@ footer a {
     color: white;
     margin: 1vw;
 }
+
+footer .kub-footer-icon img {
+    width: 36px;
+    height: 36px;
+}
