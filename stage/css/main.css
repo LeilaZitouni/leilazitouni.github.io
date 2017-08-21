@@ -443,6 +443,12 @@ img.responsive {
     font-family: 'Coda', cursive;
 }
 
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2em;
+    }
+}
+
 .accueil-title {
     position: absolute;
     left: 0;
