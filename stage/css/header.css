@@ -40,6 +40,7 @@ header {
 .slidemenu label span {
     display: block;
     padding: 10px 0;
+    display: none;
 }
 
 @media (max-width: 767px) {

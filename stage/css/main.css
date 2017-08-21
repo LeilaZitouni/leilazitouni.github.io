@@ -228,41 +228,44 @@ p a:after {
     transition: all 200ms ease-in;
 }
 
-body[current-page='main'] .highlighted {
-    background-color: #aaa;
-}
+body[current-page='main'] .highlighted,
 body[current-page='main'] p a:before,
 body[current-page='main'] p a:hover {
     background-color: #aaa;
 }
 
-body[current-page='structure'] .highlighted {
-    background-color: rgb(255, 223, 96);
+body[current-page='structure'] .page-title {
+    border-bottom: 5px solid #ffaf19;
 }
+
+body[current-page='structure'] .highlighted,
 body[current-page='structure'] p a:before,
 body[current-page='structure'] p a:hover {
     background-color: rgb(255, 223, 96);
 }
 
-body[current-page='montage'] .highlighted {
-    background-color: #98dcff;
+body[current-page='montage'] .page-title {
+    border-bottom: 5px solid #4bafe2;
 }
+body[current-page='montage'] .highlighted,
 body[current-page='montage'] p a:before,
 body[current-page='montage'] p a:hover {
     background-color: #98dcff;
 }
 
-body[current-page='communication'] .highlighted {
-    background-color: #f88;
+body[current-page='communication'] .page-title {
+    border-bottom: 5px solid #d94343;
 }
+body[current-page='communication'] .highlighted,
 body[current-page='communication'] p a:before,
 body[current-page='communication'] p a:hover {
     background-color: #f88;
 }
 
-body[current-page='tournage'] .highlighted {
-    background-color: #45e69b;
+body[current-page='tournage'] .page-title {
+    border-bottom: 5px solid #13d57b;
 }
+body[current-page='tournage'] .highlighted,
 body[current-page='tournage'] p a:before,
 body[current-page='tournage'] p a:hover {
     background-color: #45e69b;
@@ -302,7 +305,7 @@ body[current-page='tournage'] p a:hover {
     width: 100%;
     height: 300%;
     top: -100%;
-    left: 3%;
+    left: 4%;
     transition: all 5s;
 }
 
@@ -433,15 +436,22 @@ img.responsive {
     width: 100%;
 }
 
+.page-title {
+    margin: 0 2vw;
+    font-size: 3.3em;
+    color: #484848;
+    font-family: 'Coda', cursive;
+}
+
 .accueil-title {
     position: absolute;
     left: 0;
     right: 0;
-    top: 1%;
     text-align: center;
+    top: 4%;
+    font-family: 'Shadows Into Light Two', cursive;
     color: white;
-    font-size: 64px;
-    font-family: 'Shadows Into Light Two';
+    font-size: 4.3em;
 }
 
 
