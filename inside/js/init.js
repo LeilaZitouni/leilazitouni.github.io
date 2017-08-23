@@ -1,3 +1,16 @@
+function onSectionLeave(index, nextIndex, direction) {
+    console.log('left to ' + nextIndex);
+    var playerContainer = $('#player').parent('.section')[0];
+    var isLeavingPlayer = $('.section')[index] == playerContainer;
+    var isEnteringPlayer = $('.section')[nextIndex] == playerContainer;
+
+    if(isLeavingPlayer) {
+        player.pause();
+    } else if(isEnteringPlayer) {
+        player.play();
+    }
+}
+
 function loadPage(pageName) {
     $('#content').attr("w3-include-html", "./page/" + pageName + '.html');
     w3.includeHTML(function() {
@@ -10,6 +23,10 @@ function loadPage(pageName) {
         $('body').attr('current-page', pageName);
 
         initYTPlayer();
+
+        $('#fullpage').fullpage({
+            onLeave: onSectionLeave
+        });
     });
 }
 

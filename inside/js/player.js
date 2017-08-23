@@ -69,7 +69,7 @@ function Player(videoId, model) {
             iv_load_policy: 3,
             modestbranding: 1,
             showinfo: 0,
-            autoplay: 1,
+            autoplay: 0,
             rel: 0,
             suggestedQuality: 'highres'
         }
@@ -93,6 +93,8 @@ Player.prototype.onPlayerReady = function() {
     this.updateModelWithVideoData(this.model);
     this.renderChapters(this.model);
     this.element.on('mousemove mouseover mouseleave', '.progress', this.onProgressMouseEvent.bind(this));
+    this.goto(0);
+    this.pause();
 }
 
 Player.prototype.updateModelWithVideoData = function(model) {
