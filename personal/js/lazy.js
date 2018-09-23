@@ -104,5 +104,3 @@ if (!!window.addEventListener) {
 } else {
     window.onscroll = checkLazyElements
 }
-
-checkLazyElements()

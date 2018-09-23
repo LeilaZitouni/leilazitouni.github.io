@@ -1,7 +1,7 @@
 /* @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'); */
 /* @import url('https://fonts.googleapis.com/icon?family=Material+Icons'); */
 @import url("../../resources/css/normalize.css");
-@import url("../../resources/css/slider.css");
+/* @import url("../../resources/css/slider.css"); */
 @import url("./social_icons.css");
 @import url("./header.css");
 @import url("./grid.css");
@@ -122,18 +122,17 @@ a {
     left: 0;
     right: 0;
     margin: auto;
-    background-color: rgba(255, 255, 255, 0.35);
-    background-image: url("http://www.beyond-recovery.co.uk/images/playButton.png");
+    background-color: rgba(0, 0, 0, 0.35);
+    background-image: url("http://foundation.bz/images/play.png");
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: 20%;
+    background-size: 50%;
     cursor: pointer;
     transition: all 200ms;
 }
 .video-preview:hover:after,
 .video-container[lazy-iframe]:hover:after {
-    background-color: rgba(255, 255, 255, 0.1);
-    background-size: 0;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .crop img {

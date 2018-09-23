@@ -12,6 +12,9 @@ function initIncludes(pageName) {
         updateNavigationHeader(pageName)
 
         $("body").attr("current-page", pageName)
+
+        // lazy js
+        checkLazyElements()
     })
 }
 
