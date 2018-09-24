@@ -1,16 +1,16 @@
 body[current-page] footer {
-    display: block;
+  display: block;
 }
 
 footer {
-    display: none;
-    text-align: center;
-    padding: 2em 0;
-    box-sizing: border-box;
-    font-weight: 300;
+  display: none;
+  text-align: center;
+  padding: 2em 0;
+  box-sizing: border-box;
+  font-weight: 300;
 }
 
 footer a {
-    color: white;
-    margin: 1vw;
+  color: #ebebeb;
+  margin: 1vw;
 }
