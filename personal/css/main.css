@@ -323,3 +323,10 @@ img.page-title {
     max-height: 30%;
     min-height: 100px;
 }
+
+h2 {
+    font-weight: 100;
+    font-size: 2em;
+    letter-spacing: 0.2em;
+    color: grey;
+}
